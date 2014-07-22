@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140721100200) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["article_id"], name: "index_comments_on_article_id"
+  add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"
