@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  before_filter :authorize
+  before_filter :authorize , except: [:show_all]
 
   def authorize
     unless User.find_by_id(session[:user_id])
@@ -27,7 +27,11 @@ class ArticlesController < ApplicationController
   		@article = Article.find(params[:id])    
   end
 
-	def index        		
+  def show_all
+    @articles=Article.all
+  end
+	def index
+            		
       @articles = Article.where(:user_id => session[:user_id])
   end
 
