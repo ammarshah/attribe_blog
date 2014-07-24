@@ -12,6 +12,10 @@
     </div>
   <% end %>
   <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </p>
@@ -23,5 +27,5 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </p>
-  <p class="button"><%= f.submit %></p>
+  <p class="button"><%= f.submit "Sign Up" %></p>
 <% end %>

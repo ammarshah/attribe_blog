@@ -1,16 +1,18 @@
 class User < ActiveRecord::Base
   attr_accessor :password
 
-  EMAIL_REGEX = /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/
+  EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   before_save :encrypt_password
   after_save :clear_password
 
-  has_many :articles
+  has_many :articles, dependent: :destroy
   
+  validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
   validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
+  validates_presence_of :password
+  validates_length_of :password, :in => 6..20, :on => :create
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
-  
+
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt

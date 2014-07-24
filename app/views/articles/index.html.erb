@@ -1,6 +1,6 @@
 <h1>Listing articles</h1>
 
-<%= link_to 'New article', new_article_path %>
+<%= link_to 'New Article', new_article_path %></br></br>
 
 <% if @articles.any? %>
 <table>
@@ -14,13 +14,13 @@
     <tr>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article_path(article),
-                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Show |', article_path(article) %></td>
+      <td><%= link_to ' Edit |', edit_article_path(article) %></td>
+      <td><%= link_to ' Destroy', article_path(article),
+      method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
 <% else %><br/ >
-  No record found.
+  No Articles Found.
 <% end %>

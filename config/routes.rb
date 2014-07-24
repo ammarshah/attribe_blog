@@ -1,23 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'welcome/index'
   get "log_in" => "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
-  
   get "sign_up" => "users#new", :as => "sign_up"
   get "show_articles" => "articles#show_all", :as => "show_articles"
-  #get "articles" => "articles#index", :as "articles"
-  #root "users#new"
   
-  resources :sessions
   resources :users
+  resources :sessions
+  resources :published_articles
 
-  get 'welcome/index'
-  
   resources :articles do
     resources :comments
   end
-  
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
