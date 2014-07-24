@@ -1,0 +1,38 @@
+  <% if @articles.any? %>
+  
+  <% @articles.each do |article| %>
+    
+      <h2><strong>Title:</strong></h2>
+      <%= article.title %></br>
+
+      <h2><strong>Article:</strong></h2>
+      <%= article.text %></br>
+
+      <h3>Comments</h3>
+      
+      <% article.comments.each do |c| %>
+      
+        <%= c.commenter %> says:
+        <%= c.body %><br />
+  
+      <% end %>
+  <%= form_for([article, article.comments.build]) do |f| %>
+    <p>
+      <%= f.label :commenter %><br>
+      <%= f.text_field :commenter %>
+    </p>
+    <p>
+      <%= f.label :body %><br>
+      <%= f.text_area :body %>
+    </p>
+    <p>
+      <%= f.submit 'Post'%>
+    </p>
+  <% end %>
+      <hr/>
+    
+  <% end %>
+
+  <% else %><br/ >
+      No Articles Found.
+  <% end %>
