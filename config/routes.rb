@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'welcome/index'
   get "log_in" => "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
-  
   get "sign_up" => "users#new", :as => "sign_up"
-  #root "users#new"
+  get "show_articles" => "articles#show_all", :as => "show_articles"
+  
   resources :users
   resources :sessions
+  resources :published_articles
 
-  get 'welcome/index'
-  
-  
-  
   resources :articles do
     resources :comments
   end

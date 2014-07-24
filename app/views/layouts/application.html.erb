@@ -1,7 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog</title>
+  <style type="text/css">
+<!--
+a:link {
+  color: #3366CC;
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+  color: #3366CC;
+}
+a:hover {
+  text-decoration: underline;
+  color: #3366CC;
+}
+a:active {
+  text-decoration: none;
+  color: #3366CC;
+}
+-->
+</style>
+
+<title>Blog</title>
+
+  <div id="user_nav">
+  <% if current_user %>
+    Hello, <%= current_user.username %> |
+    <%= link_to "Log out", log_out_path %>
+  <% end %>
+</div>
+
+  <div id="header" style="background-color:#FFA500;text-align:center;">
+<h1 style="margin-bottom:0;"><%= link_to 'bLOG! bLOG!', controller: 'welcome', action: 'index' %></h1>
+</div>
+
+<div id="content" style="background-color:#EEEEEE">
+  <hr /><br/>
+  <%= link_to 'My Articles', controller: 'articles', action:'index' %> |
+  <%= link_to 'View All Published Articles', controller: 'articles', action:'show_all' %><br /><br />
+
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -14,18 +53,15 @@
 
 <body>
 
-<div id="user_nav">
-  <% if current_user %>
-    Logged in as <%= current_user.email %>
-    <%= link_to "Log out", log_out_path %>
-  <% end %>
-</div>
+
 
 <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, :id => "flash#{name}" %>
   <% end %>
 
 <%= yield %>
-
+</div>
+<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
+Copyright © Attribe Solutions</div>
 </body>
 </html>
