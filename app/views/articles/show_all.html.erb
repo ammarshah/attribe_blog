@@ -1,3 +1,5 @@
+  <%= paginate @articles %>
+
   <% if @articles.any? %>
   
   <% @articles.each do |article| %>
@@ -36,3 +38,5 @@
   <% else %><br/ >
       No Articles Found.
   <% end %>
+
+  <%= paginate @articles %>

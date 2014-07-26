@@ -31,6 +31,12 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'mysql2', '~> 0.3.16'
 
+gem 'pry'
+
+#gem 'will_paginate'
+
+gem 'kaminari'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

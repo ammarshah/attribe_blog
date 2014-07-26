@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
   end
 
   def show_all
-      @articles = Article.all
+      @articles = Article.page(params[:page]).per(3)
   end
 
 	def new
