@@ -4,12 +4,11 @@ Rails.application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "sign_up" => "users#new", :as => "sign_up"
-  get "show_articles" => "articles#show_all", :as => "show_articles"
+  get "articles_all" => "articles#show_all", :as => "articles_all"
   
   resources :users
   resources :sessions
-  resources :published_articles
-
+  
   resources :articles do
     resources :comments
   end

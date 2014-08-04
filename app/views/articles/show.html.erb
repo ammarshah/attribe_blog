@@ -9,7 +9,10 @@
 </p>
 
 <h2>Comments</h2>
-<%= render @article.comments %>
+
+<div id='comment'>
+    <%= render 'comments/comment', :local => @article %>
+</div>
 
 
 <h2>Add a comment:</h2>

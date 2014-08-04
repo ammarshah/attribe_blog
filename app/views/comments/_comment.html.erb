@@ -1,15 +1,12 @@
+<% @article.comments.each do |c| %>
 <p>
   <strong>Commenter:</strong>
-  <%= comment.commenter %>
+  <%= c.commenter %>
 </p>
  
 <p>
   <strong>Comment:</strong>
-  <%= comment.body %>
+  <%= c.body %>
 </p>
 
-<p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-</p>
+<% end %>

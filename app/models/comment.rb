@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
   validates :commenter, presence: true
   validates :body, presence: true
 
-  after_create :send_email_to_article_author
+  #after_create :send_email_to_article_author
 
   def send_email_to_article_author
   	UserMailer.comment_notification(self.article.user.email).deliver
