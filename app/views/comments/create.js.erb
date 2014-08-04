@@ -1,0 +1,3 @@
+$('#comment_<%= @comment.article.id %>').html("<%=j render 'comment', :locals => @comment %>");
+$('#comment_commenter').val('');
+$('#comment_body').val('');
